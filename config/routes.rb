@@ -1,9 +1,12 @@
 DeviseCucumber::Application.routes.draw do
+  resources :messages
+
+
   devise_for :users
   get "users/list"
 
   get "home/index"
-  root :to => "home#index"
+  root :to => "messages#index"
 
 
   # The priority is based upon order of creation:

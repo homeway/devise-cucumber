@@ -1,0 +1,19 @@
+<h1>欢迎使用微博</h1>
+
+<div>
+  <% form_tag %>
+    
+  <% end %>
+</div>
+
+<ul>
+<% @users.each do |user| %>
+  <li>
+    <%= "#{user.name}"%>
+    <br>
+    <%= "注册于#{user.created_at.year}年#{user.created_at.month}月#{user.created_at.day}日，
+    登录#{user.sign_in_count}次，
+    上次登录IP是#{user.last_sign_in_ip}" %>
+  </li>
+<% end %>
+</ul>
