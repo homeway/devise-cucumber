@@ -46,7 +46,7 @@ end
 假如(/^我已经登录到系统中$/) do
   create_a_registed_user
   sign_in(@user.email, @user.password)
-  page.should have_content('登录成功.')
+  page.should have_content('登录成功！')
 end
 
 当(/^我编辑我自己的帐户资料并保存$/) do
@@ -57,7 +57,7 @@ end
 end
 
 那么(/^我应当看到帐户资料已经被成功修改了$/) do
-  page.should have_content('帐号资料更新成功.')
+  page.should have_content('您的帐户信息已修改成功！')
 end
 
 假如(/^我现在没有登录$/) do
@@ -70,7 +70,7 @@ end
 end
 
 那么(/^我应当收到“注册成功”的信息提示$/) do
-  page.should have_content('欢迎您！您已注册成功.')
+  page.should have_content('欢迎您！您已注册成功！')
   page.should_not have_link('登录')
   page.should have_link('注销')
 end
@@ -163,7 +163,7 @@ end
 end
 
 那么(/^我应该看到一条登录成功的提示$/) do
-  page.should have_content('登录成功.')
+  page.should have_content('登录成功')
 end
 
 当(/^我返回网站主页$/) do
