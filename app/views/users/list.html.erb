@@ -1,0 +1,9 @@
+<h1>用户列表</h1>
+
+<ul>
+<% @users.each do |user| %>
+  <li>
+    <%= "#{user.name}，注册于#{user.created_at.year}年#{user.created_at.month}月#{user.created_at.day}日" %>
+  </li>
+<% end %>
+</ul>
