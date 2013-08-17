@@ -7,16 +7,6 @@
   <head>
   	<meta charset="utf-8" />
 
-  <% if current_user %>
-    <%= link_to('注销', destroy_user_session_path, :method => :delete) %> |
-    <%= link_to('修改档案', edit_registration_path(:user)) %>
-  <% else %>
-    <%= link_to('注册', new_registration_path(:user)) %> |
-    <%= link_to('登录', new_session_path(:user)) %>
-  <% end %>
-  
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
   	<!-- Uncomment to make IE8 render like IE7 -->
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
@@ -31,10 +21,65 @@
   </head>
 
   <body>
+    <nav class="top-bar" data-options="is_hover:false">
+      <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+          <h1><%= link_to '微时代', root_path %></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>菜单</span></a></li>
+      </ul>
+      <section class="top-bar-section">  
+        <ul class="right">
+          <li class="divider hide-for-small"></li>
+          <% if current_user %>
+            <li><%= link_to('注销', destroy_user_session_path, :method => :delete) %></li>
+            <li><%= link_to('修改档案', edit_registration_path(:user)) %></li>
+            <li><%= link_to('发布新鲜事', new_message_path, :class => "button round", "data-reveal-id"=>"myModal") %>
+          <% else %>
+            <li><%= link_to('注册', new_registration_path(:user)) %></li>
+            <li><%= link_to('登录', new_session_path(:user)) %></li>
+          <% end %>
+        </ul>
+      </section>
+    </nav>
+
+    <div id="myModal" class="reveal-modal">
+      <h2>现在就发布你的新鲜事吧！</h2>
+      <%= form_tag action="/messages" do %>
+        <div class="field">
+          <%= label_tag :label_content, "请输入微博内容：" %><br />
+          <%= text_area_tag :message, "", :size=>"60x6", :autofocus => true%>
+        </div>
+        <div class="actions">
+          <%= submit_tag('发布') %>
+        </div>
+      <% end %>
+
+
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    
+    <% if notice %>
+      <div data-alert class="alert-box success">
+        <%= notice %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div data-alert class="alert-box alert">
+        <%= alert %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
 
     <%= yield %>
 
     
     <%= javascript_include_tag "application" %>
+    <script>
+      //$(document).foundation();
+    </script>
   </body>
 </html>

@@ -7,6 +7,11 @@
       上次登录IP是#{@user.last_sign_in_ip}" %>
   </div>
   <%= render 'form' %>
+  <dl class="sub-nav">
+    <dt>显示内容:</dt>
+    <dd class="active"><%= link_to '全部', root_path %></dd>
+    <dd><%= link_to '我的微博', portal_path(current_user) %></dd>
+  </dl>
 <% end %>
 
 <%= render 'index'%>

@@ -47,8 +47,14 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
-    @message.user = current_user
+    if params[:message].class == String
+      @message = Message.new
+      @message.content = params[:message]
+      @message.user = current_user
+    else
+      @message = Message.new(params[:message])
+      @message.user = current_user
+    end
 
     respond_to do |format|
       if @message.save
@@ -84,7 +90,7 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to messages_url, notice: '刚刚删除了一条微博内容' }
+      format.html { redirect_to messages_url, alert: '刚刚删除了一条微博内容' }
       format.json { head :no_content }
     end
   end
