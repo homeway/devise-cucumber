@@ -49,32 +49,35 @@
       <h2>现在就发布你的新鲜事吧！</h2>
       <%= form_tag action="/messages" do %>
         <div class="field">
-          <%= label_tag :label_content, "请输入微博内容：" %><br />
-          <%= text_area_tag :message, "", :size=>"60x6", :autofocus => true%>
+          <%= text_area_tag :message, "", :size=>"60x6", :autofocus => true,  :placeholder=>"请输入您的微博内容" %>
         </div>
         <div class="actions">
-          <%= submit_tag('发布') %>
+          <%= submit_tag('发布', :class=>"button round") %>
         </div>
       <% end %>
-
-
       <a class="close-reveal-modal">&#215;</a>
     </div>
-    
-    <% if notice %>
-      <div data-alert class="alert-box success">
-        <%= notice %>
-        <a href="#" class="close">&times;</a>
-      </div>
-    <% end %>
-    <% if alert %>
-      <div data-alert class="alert-box alert">
-        <%= alert %>
-        <a href="#" class="close">&times;</a>
-      </div>
-    <% end %>
 
-    <%= yield %>
+    <div class="row">
+      <div class="small-11 small-centered columns">
+    
+        <% if notice %>
+          <div data-alert class="alert-box success">
+            <%= notice %>
+            <a href="#" class="close">&times;</a>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div data-alert class="alert-box alert">
+            <%= alert %>
+            <a href="#" class="close">&times;</a>
+          </div>
+        <% end %>
+
+        <%= yield %>
+
+      </div>
+    </div>
 
     
     <%= javascript_include_tag "application" %>

@@ -22,11 +22,11 @@
   <div>当前密码 <i>(为了您的帐户安全，请输入当前密码确认您的身份)</i><br />
   <%= f.password_field :current_password %></div>
 
-  <div><%= f.submit "保存" %></div>
+  <div><%= f.submit "保存", :class=>"small button" %></div>
 <% end %>
 
 <h3>删除帐户</h3>
 
-<p>不需要这个服务了? <%= button_to "删除帐户", registration_path(resource_name), :data => { :confirm => "确认将帐户删除?" }, :method => :delete %></p>
+<p>不需要这个服务了? <%= button_to "删除帐户", registration_path(resource_name), :data => { :confirm => "确认将帐户删除?" }, :method => :delete, :class=>"small button" %></p>
 
 <%= link_to "返回", :back %>

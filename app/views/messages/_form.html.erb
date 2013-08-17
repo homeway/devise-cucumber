@@ -12,10 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content, "请输入微博内容：" %><br />
-    <%= f.text_area :content, :size=>"60x6", :autofocus => true%>
+    <%= f.text_area :content, :size=>"60x6", :autofocus => true, :placeholder=>"请输入您的微博内容" %>
   </div>
   <div class="actions">
-    <%= f.submit('发布') %>
+    <%= f.submit('发布', :class=>"button round") %>
   </div>
 <% end %>

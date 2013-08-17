@@ -1,21 +1,17 @@
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @messages.each do |message| %>
-  <tr>
-    <td><%= link_to get_username(message), portal_path(message.user.id) %></td>
-    <td><%= link_to message.content, message %></td>
-    <td><%= time_ago_message(message.created_at) %></td>
+  <div class="panel">
+    <%= link_to get_username(message), portal_path(message.user.id) %>
+    <%= time_ago_message(message.created_at) %>
+    <div class="panel">
+      <%= link_to message.content, message %>
+    </div>
     <% if is_owner? message %>
-    <td><%= link_to '编辑', edit_message_path(message) %></td>
-    <td><%= link_to '删除', message, method: :delete, data: { confirm: '确定删除这条内容？' } %></td>
+      <div>
+        <ul class="button-group">
+          <li><%= link_to '编辑', edit_message_path(message), :class=>"small button" %>
+          <li><%= link_to '删除', message, method: :delete, data: { confirm: '确定删除这条内容？' }, :class=>"small button" %>
+        </ul>
+      </div>
     <% end %>
-  </tr>
+  </div>
 <% end %>
-</table>
