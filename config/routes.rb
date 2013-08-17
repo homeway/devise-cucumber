@@ -6,6 +6,7 @@ DeviseCucumber::Application.routes.draw do
   get "users/list"
 
   get "home/index"
+  get "portal/:id", :to => "messages#portal", :as => "portal"
   root :to => "messages#index"
 
 

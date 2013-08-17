@@ -12,6 +12,11 @@ class MessagesController < ApplicationController
     end
   end
 
+  def portal
+    @user = User.find(params[:id]) || User.new
+    @messages = @user.messages.order('created_at DESC')
+  end
+
   # GET /messages/1
   # GET /messages/1.json
   def show
@@ -63,7 +68,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+        format.html { redirect_to @message, notice: '成功修改了微博内容' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,7 +84,7 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to messages_url }
+      format.html { redirect_to messages_url, notice: '刚刚删除了一条微博内容' }
       format.json { head :no_content }
     end
   end

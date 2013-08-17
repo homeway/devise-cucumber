@@ -1,4 +1,4 @@
-<%= form_for(@message) do |f| %>
+<%= form_for @message do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area( :content) %>
+    <%= f.label :content, "请输入微博内容：" %><br />
+    <%= f.text_area :content, :size=>"60x6", :autofocus => true%>
   </div>
   <div class="actions">
     <%= f.submit('发布') %>

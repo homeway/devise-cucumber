@@ -1,14 +1,14 @@
-<h1>Listing messages</h1>
-<% if user_signed_in? %>
-  <div><%="#{@user.name}"%></div>
+<h1><%="#{@user.name}"%>的主页</h1>
+<% if user_signed_in? && current_user.id == @user.id%>
   <div>
       <%= "注册于#{@user.created_at.year}年#{@user.created_at.month}月#{@user.created_at.day}日，
       登录#{@user.sign_in_count}次，
       上次登录IP是#{@user.last_sign_in_ip}" %>
   </div>
-  <%= render 'form' %>
 <% end %>
 
 <%= render 'index'%>
 
+<p />
+<%= link_to '返回', root_path %>
 <br />

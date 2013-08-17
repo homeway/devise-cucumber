@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @message.user_id %>
+  <b><%= link_to @message.user.name, portal_path(@message.user_id) %></b>
+   发布于 
+  <%= time_ago_message(@message.created_at) %>
 </p>
 
 <p>
-  <b>Content:</b>
   <%= @message.content %>
 </p>
 
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<% if is_owner? @message %>
+<%= link_to '编辑', edit_message_path(@message) %> |
+<% end %>
+<%= link_to '返回', root_path %>

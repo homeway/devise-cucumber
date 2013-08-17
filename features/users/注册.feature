@@ -1,5 +1,5 @@
 #language: zh-CN
-@ok
+@ok @user
 功能: 注册新用户
   自助提交资料就可以成为新用户。
 

@@ -25,4 +25,8 @@ module MessagesHelper
     end
     msg
   end
+
+  def is_owner?(message)
+    current_user && message.user.id == current_user.id
+  end
 end
