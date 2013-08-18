@@ -6,7 +6,7 @@
       上次登录IP是#{@user.last_sign_in_ip}" %>
   </div>
 <% end %>
-  <dl class="sub-nav">
+  <dl class="my-sub-nav">
     <dt>显示内容:</dt>
     <dd><%= link_to '全部', root_path %></dd>
     <dd class="active"><%= link_to "#{@user.name}的微博", portal_path(@user) %></dd>

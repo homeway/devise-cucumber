@@ -13,5 +13,12 @@
  */
  //= require foundation_and_overrides
 
+
+
 /*在rails中应用，这句是关键*/
 @import 'foundation_and_overrides';
+
+
+.my-sub-nav {
+  @include sub-nav;
+}
